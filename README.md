@@ -36,6 +36,7 @@ Create a `.env` file in the root directory and add your API key.
 ```env
 OPENROUTER_API_KEY=your_key_here
 
+##make changes in the main.py
 in the main.py file enter your API key from openrouter.AI
 in the given below place
 
@@ -97,4 +98,5 @@ python -m venv venv
 
 # Install dependencies
 pip install -r requirements.txt
+
 
