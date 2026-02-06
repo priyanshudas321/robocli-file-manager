@@ -24,6 +24,67 @@ RoboCLI is a modular AI agent that bridges **Google Gemini 2.0 Flash** (via Open
 # Clone the repository
 git clone [https://github.com/priyanshudas321/robocli-file-manager.git](https://github.com/priyanshudas321/robocli-file-manager.git)
 cd robocli-file-manager
+## 3️⃣ API Configuration
+
+Create a `.env` file in the root directory and add your API key.
+
+> ⚠️ Note:  
+> This file is locally stored and protected by `.gitignore` to ensure professional security standards.
+
+### Example `.env` file
+
+```env
+OPENROUTER_API_KEY=your_key_here
+```
+
+---
+
+# 🎮 Usage Guide
+
+## 🤖 Agent Mode (Autonomous)
+
+Launch the agent and talk to your computer in plain English:
+
+```powershell
+python main.py
+```
+
+**Example Command:**
+
+```
+Find all PDFs in my robot-test folder
+```
+
+---
+
+## 🔍 Manual Search (Discovery Module)
+
+Direct access to the secure search engine:
+
+```powershell
+python search.py --path "C:\Users\Name\Downloads" --ext .pdf
+```
+
+---
+
+# 🛡️ Security Policy
+
+This agent is built with **safety as a first principle**.  
+It strictly refuses to traverse the following locations:
+
+### 🚫 Operating System Folders
+- `C:\Windows`
+- `C:\Windows\System32`
+- `System Volume Information`
+
+### 🚫 Program Directories
+- `C:\Program Files`
+- `C:\Program Files (x86)`
+
+### 🚫 Hidden / Metadata Folders
+- `.git`
+- `.env`
+- `$Recycle.Bin`
 
 # Initialize and activate Virtual Environment
 python -m venv venv
