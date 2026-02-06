@@ -1,4 +1,4 @@
-import os
+Timport os
 import json
 import subprocess
 import sys
@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Using the direct key to bypass .env loading issues for the deadline
-API_KEY = "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"
+API_KEY = "ENTER_YOUR_API_KEYS"
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
