@@ -1,42 +1,33 @@
-# Local File Robot Usage Guide
+# 🤖 RoboCLI: AI-Powered Autonomous File Agent
 
-This agent skill allows you to programmatically search and organize files using Zero-Trust security principles.
+RoboCLI is a modular AI agent that bridges **Google Gemini 2.0 Flash** (via OpenRouter) with your local Windows file system. Built for the 2026 Robothon, it allows users to manage, search, and organize local data using natural language commands while strictly adhering to **Zero-Trust** security principles.
 
-## Components
+---
 
-1.  **`search.py`**: Scans for files and outputs JSON.
-2.  **`organize.py`**: Reads JSON input and moves files.
 
-## How to Run
+## 🌟 Key Features
+* **Natural Language Processing:** Translates plain English instructions into precise system actions using Gemini 2.0.
+* **Zero-Trust Security:** Hard-coded exclusions for system-critical directories (`C:\Windows`, `Program Files`) and hidden developer metadata.
+* **Modular Architecture:** Distinct separation between AI Orchestration (`main.py`), Discovery (`search.py`), and Operations (`organize.py`).
+* **Safe-by-Default:** Supports dry-run execution to preview file system changes before they are committed.
 
-### 1. Basic Search
+---
 
-Search for specific file extensions. Use the `--path` to specify where to start.
+## 🛠️ Installation & Setup
 
+### 1. Prerequisites
+* Python 3.10+
+* OpenRouter API Key
+
+### 2. Environment Setup
 ```powershell
-# Search for PDFs in your Downloads folder
-python LocalFileRobot/search.py --path "C:\Users\YourName\Downloads" --ext .pdf
-```
+# Clone the repository
+git clone [https://github.com/priyanshudas321/robocli-file-manager.git](https://github.com/priyanshudas321/robocli-file-manager.git)
+cd robocli-file-manager
 
-### 2. Dry-Run Organization (Planning)
+# Initialize and activate Virtual Environment
+python -m venv venv
+.\venv\Scripts\Activate.ps1
 
-See what _would_ happen without actually moving files. You can pipe the search output directly to the organizer.
-
-```powershell
-# Plan to move all PDFs from Downloads to a "PDFs" folder on Desktop
-python LocalFileRobot/search.py --path "C:\Users\YourName\Downloads" --ext .pdf | python LocalFileRobot/organize.py --dest "C:\Users\YourName\Desktop\PDFs"
-```
-
-### 3. Execution (Dangerous)
-
-Actually move the files. Add the `--execute` flag.
-
-```powershell
-# MOVE files
-python LocalFileRobot/search.py --path "C:\Users\YourName\Downloads" --ext .pdf | python LocalFileRobot/organize.py --dest "C:\Users\YourName\Desktop\PDFs" --execute
-```
-
-## Security
-
-- **Zero-Trust**: The robot will strictly refuse to search `C:\Windows`, `C:\Program Files`, or hidden folders (like `.git`).
-- **Safe Mode**: By default, `organize.py` only prints a plan. You must explicitly add `--execute` to make changes.
+# Install dependencies
+pip install -r requirements.txt
